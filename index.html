@@ -81,6 +81,12 @@ body{
 .btn-diagram svg{width:13px;height:13px;flex-shrink:0}
 .btn-diagram.has-examples{border-color:var(--purple-border);background:var(--purple-dim);color:var(--purple)}
 .btn-diagram.has-examples:hover{background:rgba(127,119,221,0.18);border-color:var(--purple)}
+.btn-video{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;border:1px solid var(--cyan-border);background:var(--cyan-dim);color:var(--cyan);font-family:'Outfit',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;white-space:nowrap}
+.btn-video:hover{background:rgba(44,195,242,0.18);border-color:var(--cyan)}
+.btn-video.has-clips{border-color:var(--green-border);background:var(--green-dim);color:var(--green)}
+.btn-video.has-clips:hover{background:rgba(101,195,50,0.18);border-color:var(--green)}
+.modal-video-wrap{flex:1;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:16px;background:#000}
+.modal-desc{padding:10px 18px;font-size:13px;color:#bbb;line-height:1.65;border-top:1px solid var(--border);flex-shrink:0;max-height:80px;overflow-y:auto}
 
 /* COLLAPSE TOGGLE */
 .card-toggle{width:22px;height:22px;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:transform .2s}
@@ -99,6 +105,9 @@ body{
 .bullet-list li.warn{color:#FFD54F}
 .bullet-list li.warn::before{background:#FFD54F}
 .bullet-list strong{color:#fff;font-weight:600}
+.bullet-sub{list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:8px;padding-left:4px}
+.bullet-sub li{position:relative;padding-left:14px;font-size:13.5px;color:#bbb;line-height:1.65}
+.bullet-sub li::before{content:'–';position:absolute;left:0;color:var(--amber);font-weight:700}
 
 /* TAGS ROW */
 .tags-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
@@ -272,6 +281,10 @@ mark{background:rgba(255,193,7,0.25);color:inherit;border-radius:2px}
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="2" width="14" height="11" rx="1.5"/><path d="M5 13v1M11 13v1M3 13h10"/><circle cx="8" cy="7.5" r="2"/></svg>
           View Diagram
         </button>
+        <button class="btn-video" onclick="openVideo(event,'Cover 2 Man','c2man')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="10" height="10" rx="1.5"/><path d="M11 6.5l4-2v7l-4-2V6.5z"/></svg>
+          View Video
+        </button>
         <div class="card-toggle"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg></div>
       </div>
     </div>
@@ -295,13 +308,24 @@ mark{background:rgba(255,193,7,0.25);color:inherit;border-radius:2px}
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="2" width="14" height="11" rx="1.5"/><path d="M5 13v1M11 13v1M3 13h10"/><circle cx="8" cy="7.5" r="2"/></svg>
           View Diagram
         </button>
+        <button class="btn-video has-clips" onclick="openVideo(event,'Cover 2 Zone','c2zone')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="10" height="10" rx="1.5"/><path d="M11 6.5l4-2v7l-4-2V6.5z"/></svg>
+          View Video (2)
+        </button>
         <div class="card-toggle"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg></div>
       </div>
     </div>
     <div class="card-body">
       <ul class="bullet-list">
-        <li>Same structure as American football Cover 2 Zone</li>
-        <li class="warn">Quite rare in the CFL — very challenging to cover the full width of the CFL field with just two deep defenders</li>
+        <li>Same structure as American Cover 2 Zone with one key difference</li>
+        <li>It's very challenging to cover the full width of the CFL field with just two deep defenders. Therefore, corners will have carry responsibility attached to their flats zone to help them out</li>
+        <li>Corners will sink as they read the #2 receiver
+          <ul class="bullet-sub">
+            <li>If #2 runs out to the flats, the corner stays in the flats</li>
+            <li>If #2 runs vertical, the corner locks on to #1 and carries him out of the flats — this allows the deep half player to ignore the outermost area of the field and play overtop of #2</li>
+          </ul>
+        </li>
+        <li>Because of this, there will often be multiple players responsible for the flats. With 6 underneath defenders: 2 flats, 2 curl/flats, 2 hook/curls. The curl/flat players will cover the flats if the initial flat defender has to carry a vertical route</li>
         <li class="note"><strong>TAMPA NOTE:</strong> To classify a coverage as Tampa-2, the middle-of-field defender <strong>must</strong> be an inside linebacker by listed roster position. If a free safety lines up at a LB position and drops to the middle, it is classified as Cover 3 Cut — not Tampa</li>
       </ul>
       <div class="tags-row"><span class="tag tag-zone">Zone</span><span class="tag tag-rare">Rare in CFL</span></div>
@@ -328,6 +352,10 @@ mark{background:rgba(255,193,7,0.25);color:inherit;border-radius:2px}
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="2" width="14" height="11" rx="1.5"/><path d="M5 13v1M11 13v1M3 13h10"/><circle cx="8" cy="7.5" r="2"/></svg>
           View Diagram
         </button>
+        <button class="btn-video" onclick="openVideo(event,'Cover 3 Hold','c3hold')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="10" height="10" rx="1.5"/><path d="M11 6.5l4-2v7l-4-2V6.5z"/></svg>
+          View Video
+        </button>
         <div class="card-toggle"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg></div>
       </div>
     </div>
@@ -350,6 +378,10 @@ mark{background:rgba(255,193,7,0.25);color:inherit;border-radius:2px}
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="2" width="14" height="11" rx="1.5"/><path d="M5 13v1M11 13v1M3 13h10"/><circle cx="8" cy="7.5" r="2"/></svg>
           View Diagram
         </button>
+        <button class="btn-video" onclick="openVideo(event,'Cover 3 Hold w/ Lock','c3lock')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="10" height="10" rx="1.5"/><path d="M11 6.5l4-2v7l-4-2V6.5z"/></svg>
+          View Video
+        </button>
         <div class="card-toggle"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg></div>
       </div>
     </div>
@@ -371,6 +403,10 @@ mark{background:rgba(255,193,7,0.25);color:inherit;border-radius:2px}
         <button class="btn-diagram has-examples" onclick="openDiagram(event,'Cover 3 Hold — Pattern Match',['c3pm','c3pm1','c3pm2','c3pm3','c3pm4'])">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="2" width="14" height="11" rx="1.5"/><path d="M5 13v1M11 13v1M3 13h10"/><circle cx="8" cy="7.5" r="2"/></svg>
           View Diagram + Examples
+        </button>
+        <button class="btn-video has-clips" onclick="openVideo(event,'Cover 3 Hold — Pattern Match','c3pm')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="10" height="10" rx="1.5"/><path d="M11 6.5l4-2v7l-4-2V6.5z"/></svg>
+          View Video (3)
         </button>
         <div class="card-toggle"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg></div>
       </div>
@@ -400,6 +436,10 @@ mark{background:rgba(255,193,7,0.25);color:inherit;border-radius:2px}
         <button class="btn-diagram has-examples" onclick="openDiagram(event,'Cover 3 Cut',['c3cut','c3cut1','c3cut2'])">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="2" width="14" height="11" rx="1.5"/><path d="M5 13v1M11 13v1M3 13h10"/><circle cx="8" cy="7.5" r="2"/></svg>
           View Diagram + Examples
+        </button>
+        <button class="btn-video has-clips" onclick="openVideo(event,'Cover 3 Cut (Double Cloud)','c3cut')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="10" height="10" rx="1.5"/><path d="M11 6.5l4-2v7l-4-2V6.5z"/></svg>
+          View Video (4)
         </button>
         <div class="card-toggle"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg></div>
       </div>
@@ -434,6 +474,10 @@ mark{background:rgba(255,193,7,0.25);color:inherit;border-radius:2px}
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="2" width="14" height="11" rx="1.5"/><path d="M5 13v1M11 13v1M3 13h10"/><circle cx="8" cy="7.5" r="2"/></svg>
           View Diagram
         </button>
+        <button class="btn-video" onclick="openVideo(event,'Cover 4 — Base Quarters','c4')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="10" height="10" rx="1.5"/><path d="M11 6.5l4-2v7l-4-2V6.5z"/></svg>
+          View Video
+        </button>
         <div class="card-toggle"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg></div>
       </div>
     </div>
@@ -457,6 +501,10 @@ mark{background:rgba(255,193,7,0.25);color:inherit;border-radius:2px}
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="2" width="14" height="11" rx="1.5"/><path d="M5 13v1M11 13v1M3 13h10"/><circle cx="8" cy="7.5" r="2"/></svg>
           View Diagram
         </button>
+        <button class="btn-video has-clips" onclick="openVideo(event,'Cover 4 Weak','c4wk')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="10" height="10" rx="1.5"/><path d="M11 6.5l4-2v7l-4-2V6.5z"/></svg>
+          View Video (2)
+        </button>
         <div class="card-toggle"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg></div>
       </div>
     </div>
@@ -478,6 +526,10 @@ mark{background:rgba(255,193,7,0.25);color:inherit;border-radius:2px}
         <button class="btn-diagram" onclick="openDiagram(event,'Cover 4 Double Trap',['c4dt'])">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="2" width="14" height="11" rx="1.5"/><path d="M5 13v1M11 13v1M3 13h10"/><circle cx="8" cy="7.5" r="2"/></svg>
           View Diagram
+        </button>
+        <button class="btn-video" onclick="openVideo(event,'Cover 4 Double Trap','c4dt')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="10" height="10" rx="1.5"/><path d="M11 6.5l4-2v7l-4-2V6.5z"/></svg>
+          View Video
         </button>
         <div class="card-toggle"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg></div>
       </div>
@@ -501,6 +553,10 @@ mark{background:rgba(255,193,7,0.25);color:inherit;border-radius:2px}
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="2" width="14" height="11" rx="1.5"/><path d="M5 13v1M11 13v1M3 13h10"/><circle cx="8" cy="7.5" r="2"/></svg>
           View Diagram
         </button>
+        <button class="btn-video" onclick="openVideo(event,'Cover 4 Field Lock','c4fl')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="10" height="10" rx="1.5"/><path d="M11 6.5l4-2v7l-4-2V6.5z"/></svg>
+          View Video
+        </button>
         <div class="card-toggle"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg></div>
       </div>
     </div>
@@ -522,6 +578,10 @@ mark{background:rgba(255,193,7,0.25);color:inherit;border-radius:2px}
         <button class="btn-diagram" onclick="openDiagram(event,'Cover 4 Quad Box',['c4qb'])">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="2" width="14" height="11" rx="1.5"/><path d="M5 13v1M11 13v1M3 13h10"/><circle cx="8" cy="7.5" r="2"/></svg>
           View Diagram
+        </button>
+        <button class="btn-video" onclick="openVideo(event,'Cover 4 Quad Box','c4qb')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="10" height="10" rx="1.5"/><path d="M11 6.5l4-2v7l-4-2V6.5z"/></svg>
+          View Video
         </button>
         <div class="card-toggle"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg></div>
       </div>
@@ -557,6 +617,10 @@ mark{background:rgba(255,193,7,0.25);color:inherit;border-radius:2px}
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="2" width="14" height="11" rx="1.5"/><path d="M5 13v1M11 13v1M3 13h10"/><circle cx="8" cy="7.5" r="2"/></svg>
           View Diagram
         </button>
+        <button class="btn-video" onclick="openVideo(event,'Cover 0 (Zero)','c0')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="10" height="10" rx="1.5"/><path d="M11 6.5l4-2v7l-4-2V6.5z"/></svg>
+          View Video
+        </button>
         <div class="card-toggle"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg></div>
       </div>
     </div>
@@ -578,6 +642,10 @@ mark{background:rgba(255,193,7,0.25);color:inherit;border-radius:2px}
         <button class="btn-diagram" onclick="openDiagram(event,'Cover 10 (One-Oh)',['c10'])">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="2" width="14" height="11" rx="1.5"/><path d="M5 13v1M11 13v1M3 13h10"/><circle cx="8" cy="7.5" r="2"/></svg>
           View Diagram
+        </button>
+        <button class="btn-video" onclick="openVideo(event,'Cover 10 (One-Oh)','c10')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="10" height="10" rx="1.5"/><path d="M11 6.5l4-2v7l-4-2V6.5z"/></svg>
+          View Video
         </button>
         <div class="card-toggle"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg></div>
       </div>
@@ -601,6 +669,10 @@ mark{background:rgba(255,193,7,0.25);color:inherit;border-radius:2px}
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="2" width="14" height="11" rx="1.5"/><path d="M5 13v1M11 13v1M3 13h10"/><circle cx="8" cy="7.5" r="2"/></svg>
           View Diagram
         </button>
+        <button class="btn-video" onclick="openVideo(event,'Cover 11 (One-One)','c11')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="10" height="10" rx="1.5"/><path d="M11 6.5l4-2v7l-4-2V6.5z"/></svg>
+          View Video
+        </button>
         <div class="card-toggle"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg></div>
       </div>
     </div>
@@ -622,6 +694,10 @@ mark{background:rgba(255,193,7,0.25);color:inherit;border-radius:2px}
         <button class="btn-diagram" onclick="openDiagram(event,'Cover 12 (One-Two)',['c12'])">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="2" width="14" height="11" rx="1.5"/><path d="M5 13v1M11 13v1M3 13h10"/><circle cx="8" cy="7.5" r="2"/></svg>
           View Diagram
+        </button>
+        <button class="btn-video" onclick="openVideo(event,'Cover 12 (One-Two)','c12')">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="10" height="10" rx="1.5"/><path d="M11 6.5l4-2v7l-4-2V6.5z"/></svg>
+          View Video
         </button>
         <div class="card-toggle"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg></div>
       </div>
@@ -649,9 +725,13 @@ mark{background:rgba(255,193,7,0.25);color:inherit;border-radius:2px}
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l10 10M13 3L3 13"/></svg>
       </button>
     </div>
-    <div class="modal-img-wrap">
+    <div class="modal-img-wrap" id="modalImgWrap">
       <img id="modalImg" src="" alt="">
     </div>
+    <div class="modal-video-wrap" id="modalVideoWrap" style="display:none">
+      <video id="modalVideoEl" controls playsinline style="width:100%;border-radius:6px;background:#000;max-height:70vh"></video>
+    </div>
+    <div class="modal-desc" id="modalDesc" style="display:none"></div>
     <div class="modal-label-bar" id="modalLabelBar"></div>
     <div class="modal-nav" id="modalNav">
       <button class="modal-nav-btn" id="prevBtn" onclick="navDiagram(-1)">← Prev</button>
@@ -761,13 +841,100 @@ function renderModal() {
 }
 
 function navDiagram(dir) {
-  modalIdx = Math.max(0, Math.min(modalKeys.length - 1, modalIdx + dir));
-  renderModal();
+  if (modalMode === 'video') {
+    videoIdx = Math.max(0, Math.min(videoClips.length - 1, videoIdx + dir));
+    renderVideoModal();
+  } else {
+    modalIdx = Math.max(0, Math.min(modalKeys.length - 1, modalIdx + dir));
+    renderModal();
+  }
+}
+
+// ── VIDEO MODAL ──
+const VIDEOS = {
+  "c2man":  [{src:"videos/cover_2_man.mp4",                     text:"Standard Cover 2 Man coverage"}],
+  "c2zone": [
+    {src:"videos/cover_2_zone_1.mp4",                           text:"Standard Cover 2 Zone"},
+    {src:"videos/cover_2_zone_2.mp4",                           text:"Cover 2 Zone with LCB carrying the flat route because he reads #2 receiver going vertical. RCB should not carry as #2 is running out route to flats — this is a bust on RCB"}
+  ],
+  "c3hold": [{src:"videos/cover_3_hold.mp4",                    text:"Standard Cover 3 Hold Coverage"}],
+  "c3lock": [{src:"videos/cover_3_hold_lock.mp4",               text:"Cover 3 Hold with Boundary Corner locking on to LWR in man coverage. Boundary halfback (37), SAM linebacker (12) and field corner (48) are deep third players."}],
+  "c3pm":   [
+    {src:"videos/cover_3_hold_pattern_match_1.mp4",             text:"Cover 3 Hold with pattern matching example. Corners and free safety are the deep third players."},
+    {src:"videos/cover_3_hold_pattern_match_2.mp4",             text:"Cover 3 Hold with pattern matching example. Plays out more like Cover 4 with field halfback reading #2/#3 receiver and staying on top with outside leverage if/when one goes vertical."},
+    {src:"videos/cover_3_hold_pattern_match_3.mp4",             text:"Cover 3 Hold with pattern matching example. This time SAM linebacker is running the seam with #2 receiver going vertical."}
+  ],
+  "c3cut":  [
+    {src:"videos/cover_3_cut.mp4",                              text:"Standard Cover 3 Cut (Double Cloud) Coverage"},
+    {src:"videos/cover_3_cut_example_1.mp4",                    text:"Cover 3 Cut with cut and carry example"},
+    {src:"videos/cover_3_cut_example_2.mp4",                    text:"Cover 3 Cut with cut and carry example"},
+    {src:"videos/cover_3_cut_example_3.mp4",                    text:"Cover 3 Cut with cut and carry example"}
+  ],
+  "c4":     [{src:"videos/cover_4.mp4",                         text:"Standard Cover 4 (Base Quarters) Coverage"}],
+  "c4wk":   [
+    {src:"videos/cover_4_weak_1.mp4",                           text:"Cover 4 Weak Coverage"},
+    {src:"videos/cover_4_weak_2.mp4",                           text:"Cover 4 Weak Coverage"}
+  ],
+  "c4dt":   [{src:"videos/cover_4_double_trap.mp4",             text:"Cover 4 Double Trap Coverage"}],
+  "c4fl":   [{src:"videos/cover_4_field_lock.mp4",              text:"Cover 4 Field Lock Coverage"}],
+  "c4qb":   [{src:"videos/cover_4_quad_box.mp4",                text:"Cover 4 Quad Box Coverage"}],
+  "c0":     [{src:"videos/cover_0.mp4",                         text:"Cover 0 (Zero) — all out blitz, everyone in man with no help over the top"}],
+  "c10":    [{src:"videos/cover_10.mp4",                        text:"Cover 10 (One-Oh) Coverage"}],
+  "c11":    [{src:"videos/cover_11.mp4",                        text:"Cover 11 (One-One) Coverage"}],
+  "c12":    [{src:"videos/cover_12.mp4",                        text:"Cover 12 (One-Two) Coverage"}]
+};
+
+let modalMode = 'image'; // 'image' | 'video'
+let videoClips = [];
+let videoIdx  = 0;
+
+function openVideo(evt, title, key) {
+  evt.stopPropagation();
+  const clips = VIDEOS[key];
+  if (!clips) return;
+  videoClips = clips;
+  videoIdx   = 0;
+  modalMode  = 'video';
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalImgWrap').style.display  = 'none';
+  document.getElementById('modalVideoWrap').style.display = 'flex';
+  renderVideoModal();
+  document.getElementById('diagModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function renderVideoModal() {
+  const clip = videoClips[videoIdx];
+  const v = document.getElementById('modalVideoEl');
+  v.src = clip.src;
+  v.load();
+  v.play().catch(() => {});
+  const desc = document.getElementById('modalDesc');
+  if (clip.text) {
+    desc.textContent = clip.text;
+    desc.style.display = 'block';
+  } else {
+    desc.style.display = 'none';
+  }
+  const hasNav = videoClips.length > 1;
+  document.getElementById('modalNav').style.display = hasNav ? 'flex' : 'none';
+  if (hasNav) {
+    document.getElementById('modalCounter').textContent = (videoIdx + 1) + ' / ' + videoClips.length;
+    document.getElementById('prevBtn').disabled = videoIdx === 0;
+    document.getElementById('nextBtn').disabled = videoIdx === videoClips.length - 1;
+  }
+  document.getElementById('modalLabelBar').textContent = videoClips.length > 1 ? 'Clip ' + (videoIdx + 1) + ' of ' + videoClips.length : '';
 }
 
 function closeModal() {
   document.getElementById('diagModal').classList.remove('open');
   document.body.style.overflow = '';
+  // Stop video playback
+  const v = document.getElementById('modalVideoEl'); v.pause(); v.src = '';
+  document.getElementById('modalImgWrap').style.display  = 'flex';
+  document.getElementById('modalVideoWrap').style.display = 'none';
+  document.getElementById('modalDesc').style.display = 'none';
+  modalMode = 'image';
 }
 
 function handleOverlayClick(evt) {
